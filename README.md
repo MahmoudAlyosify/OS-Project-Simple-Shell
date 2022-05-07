@@ -1,2 +1,37 @@
 # OS-Project-Simple-Shell
-Course Title: Operating Systems​ Course Code: CS321 
+# Simple Shell & File system (FAT) phase#1
+Course Title: Operating Systems Course Code: CS321 
+Prof. Khaled F. Hussain
+Faculty of Computers and Information, Assiut University
+Problem Statement​
+Design and implement a basic shell interface that supports the execution of a series of commands. The shell should be robust (e.g., it should not crash under any circumstance)
+
+In this project you will implement a Mini-FAT simple file system. Your file system will be able to allow users to browse the directory structure, create and delete new files and directories, etc. You are to write a simple file system which will use a regular file as the "virtual disk". The structure of the file system is based on FAT, simplified, and called mini-FAT. 
+
+The shell must support the following internal commands:
+
+cd - Change the current default directory to . If the argument is not present, report the current directory. If the directory does not exist an appropriate error should be reported.​
+
+cls - Clear the screen.​
+
+dir - List the contents of directory .​
+
+quit - Quit the shell.
+copy - Copies one or more files to another location​
+
+del - Deletes one or more files.​
+
+help -Provides Help information for commands.​
+
+md - Creates a directory.​
+
+rd - Removes a directory.​
+
+rename -  Renames a file.​
+
+type - Displays the contents of a text file.​
+
+import – import text file(s) from your computer​
+
+export – export text file(s) to your computer​
+
