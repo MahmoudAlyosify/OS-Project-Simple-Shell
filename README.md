@@ -1,7 +1,7 @@
 # OS-Project-Simple-Shell
 # Simple Shell & File system (FAT) phase#1
 Course Title: Operating Systems Course Code: CS321 
-Prof. Khaled F. Hussain
+by Prof. Khaled F. Hussain
 Faculty of Computers and Information, Assiut University
 Problem Statement​
 Design and implement a basic shell interface that supports the execution of a series of commands. The shell should be robust (e.g., it should not crash under any circumstance)
@@ -35,3 +35,9 @@ import – import text file(s) from your computer​
 
 export – export text file(s) to your computer​
 
+![Screenshot 2022-05-07 094212](https://user-images.githubusercontent.com/59246305/167244349-4b9a671a-7f12-4c28-8a69-551c01877e31.png)
+
+#This project was implemented by:
+- Mahmoud Sayed Youssef
+- Ahmed Mohsen Mohamed
+- Mohamed Mamdouh Allam
