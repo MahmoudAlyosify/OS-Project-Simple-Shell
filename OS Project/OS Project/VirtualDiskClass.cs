@@ -48,14 +48,14 @@ namespace OS_Project
                     }
                     file.Close();
                 }
-                Root = new Directory("M:\\Users\\Operating System".ToCharArray(), 1, 6,0, null);
+                Root = new Directory("M:".ToCharArray(), 1, 6,0, null);
                 Root.Write_Directory();
                 FatTable.WriteFatTable();
             }
             else
             {
                 int[] Fat_Table = FatTable.GetFatTable();
-                Root = new Directory("M:\\Users\\Operating System".ToCharArray(), 1, 5,0, null);
+                Root = new Directory("M:".ToCharArray(), 1, 5,0, null);
                 Root.Write_Directory();
                 FatTable.WriteFatTable();
                 Root.ReadDirectory();

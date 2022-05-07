@@ -98,7 +98,7 @@ namespace OS_Project
 
             int index = 0;
             byte[] Fcluster = new byte[4]; // علشان يقرأ الفيرست كلاستر
-            for (int i=24;i<28; i++)
+            for (int i = 24; i < 28; i++) 
             {
                 Fcluster[index] = b[i]; // خزن الفيرست كلاستر فى الاراى
                 index++;

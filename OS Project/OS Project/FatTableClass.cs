@@ -90,14 +90,11 @@ namespace OS_Project
         {
             int[] NotBlocks = new int[5] { 0, 1, 2, 3, 4 };
             if (Index < 0)
-            {
-                
-            }
+            {}
             else
             {
                 for (int i = 0; i < GetFatTable().Length; i++)
                 {
-
                     if (Index != NotBlocks[0] && Index != NotBlocks[1] && Index != NotBlocks[2] && Index != NotBlocks[3] && Index != NotBlocks[4])
                     {
                         if (i == Index)

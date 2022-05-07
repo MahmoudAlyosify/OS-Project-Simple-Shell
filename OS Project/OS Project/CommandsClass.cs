@@ -37,21 +37,20 @@ namespace OS_Project
 
             else if (CommandArray[0].ToLower() == "help")
             {
-                Console.WriteLine("-cd       Change the current default directory to another.");
-                Console.WriteLine("-cls      Clear the screen.");
-                Console.WriteLine("-dir      List the contents of directory.");
-                Console.WriteLine("-help     Display the user manual using the more filter.");
-                Console.WriteLine("-quit     Quit the shell.");
-                Console.WriteLine("-copy     Copies one or more files to another location.");
-                Console.WriteLine("-del      Deletes one or more files.");
-                Console.WriteLine("-md       Creates a directory.");
-                Console.WriteLine("-rd       Removes a directory.");
-                Console.WriteLine("-rename   Renames a file.");
-                Console.WriteLine("-type     Displays the contents of a text file.");
-                Console.WriteLine("-import   import text file(s) from your computer.");
-                Console.WriteLine("-export   export text file(s) to your computer.");
+                Console.WriteLine("cd   Change the current default directory to. If the argument is not present, report the current directory. If the directory does not exist an appropriate error should be reported.");
+                Console.WriteLine("cls   Clear the screen.");
+                Console.WriteLine("dir   List the contents of directory.");
+                Console.WriteLine("help   Display the user manual using the more filter.");
+                Console.WriteLine("quit   Quit the shell.");
+                Console.WriteLine("copy   Copies one or more files to another location.");
+                Console.WriteLine("del   Deletes one or more files.");
+                Console.WriteLine("md   Creates a directory.");
+                Console.WriteLine("rd   Removes a directory.");
+                Console.WriteLine("rename   Renames a file.");
+                Console.WriteLine("type   Displays the contents of a text file.");
+                Console.WriteLine("import   import text file(s) from your computer.");
+                Console.WriteLine("export   export text file(s) to your computer.");
             }
-
             else if (CommandArray[0].ToLower() == "dir")
             {
                 int FileCounter = 0;
@@ -90,7 +89,6 @@ namespace OS_Project
                 }
                 Console.WriteLine(FolderCounter + " Folder(s)     " + FatTable.FreeSpaces());
             }
-
             else
             {
                 Console.WriteLine(CommandArray[0] + " is not a valid command.");
@@ -101,67 +99,67 @@ namespace OS_Project
         {
             if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "cd")
             {
-                Console.WriteLine("-cd   Change the current default directory to. If the argument is not present, report the current directory. If the directory does not exist an appropriate error should be reported.");
+                Console.WriteLine("cd   Change the current default directory to. If the argument is not present, report the current directory. If the directory does not exist an appropriate error should be reported.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "cls")
             {
-                Console.WriteLine("-cls   Clear the screen.");
+                Console.WriteLine("cls   Clear the screen.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "dir")
             {
-                Console.WriteLine("-dir   List the contents of directory.");
+                Console.WriteLine("dir   List the contents of directory.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "help")
             {
-                Console.WriteLine("-help   Display the user manual using the more filter.");
+                Console.WriteLine("help   Display the user manual using the more filter.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "quit")
             {
-                Console.WriteLine("-quit   Quit the shell.");
+                Console.WriteLine("quit   Quit the shell.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "copy")
             {
-                Console.WriteLine("-copy   Copies one or more files to another location.");
+                Console.WriteLine("copy   Copies one or more files to another location.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "del")
             {
-                Console.WriteLine("-del   Deletes one or more files.");
+                Console.WriteLine("del   Deletes one or more files.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "md")
             {
-                Console.WriteLine("-md   Creates a directory.");
+                Console.WriteLine("md   Creates a directory.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "rd")
             {
-                Console.WriteLine("-rd   Removes a directory.");
+                Console.WriteLine("rd   Removes a directory.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "rename")
             {
-                Console.WriteLine("-rename   Renames a file.");
+                Console.WriteLine("rename   Renames a file.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "type")
             {
-                Console.WriteLine("-type   Displays the contents of a text file.");
+                Console.WriteLine("type   Displays the contents of a text file.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "import")
             {
-                Console.WriteLine("-import   import text file(s) from your computer.");
+                Console.WriteLine("import   import text file(s) from your computer.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "help" && CommandArray2Arg[1].ToLower() == "export")
             {
-                Console.WriteLine("-export   export text file(s) to your computer.");
+                Console.WriteLine("export   export text file(s) to your computer.");
             }
 
             else if (CommandArray2Arg[0].ToLower() == "md")
@@ -242,15 +240,16 @@ namespace OS_Project
                         Console.WriteLine("Specified Folder isn't exist , it's File.");
                     }
                 }
-
-
+                else if (l.Length != k.Length)
+                {
+                    Console.WriteLine("Folder Name isn't Exist");
+                }
             }
 
             else if (CommandArray2Arg[0].ToLower() == "import") //بجيب فايل من الجهاز وبحطه فى الفيرتشوال ديسك
             {
                 if (!File.Exists(CommandArray2Arg[1].ToString()))
                 {
-                    // Console.WriteLine(CommandArray2Arg[1].ToString());
                     Console.WriteLine("The file is not Exist");
                 }
                 else
@@ -277,15 +276,12 @@ namespace OS_Project
                             int FirstCluster = FatTable.getAvailableBlock();
                             FatTable.setNext(-1, FirstCluster);
                             FileEntryClass f = new FileEntryClass(fileName.ToCharArray(), 2, FirstCluster, FileSizeN, Program.CurrentDirectory, FileContent);
-                            // Program.CurrentDirectory.DirectoryTable.Add(f);
                             f.FileContent = FileContent;
                             f.WriteFileContent();
-                            //Console.WriteLine(f.ReadFileContent());
                             Directory d = new Directory(fileName.ToCharArray(), 2, FirstCluster, FileSizeN, Program.CurrentDirectory);
                             d.fileSize = FileSizeN;
                             d.firstCluster = FirstCluster;
                             Program.CurrentDirectory.DirectoryTable.Add(d);
-
                             Program.CurrentDirectory.Write_Directory();
                             Program.CurrentDirectory.ReadDirectory();
                         }
@@ -302,7 +298,6 @@ namespace OS_Project
                         }
                     }
                 }
-
             }
 
             else if (CommandArray2Arg[0].ToLower() == "type")
@@ -314,7 +309,7 @@ namespace OS_Project
                     int first = Program.CurrentDirectory.DirectoryTable[index].firstCluster;
                     int size = Program.CurrentDirectory.DirectoryTable[index].fileSize;
                     string content = "";
-                    string content_txt = File.ReadAllText("D:\\Mahmoud.txt");
+                    string content_txt = File.ReadAllText("E:\\moh.txt");
                     FileEntryClass d1 = new FileEntryClass(CommandArray2Arg[1].ToCharArray(), 0x01, first, size, Program.CurrentDirectory, content);
                     d1.ReadFileContent();
                     Console.WriteLine(content_txt);
@@ -324,6 +319,45 @@ namespace OS_Project
                     Console.WriteLine("The system cannot find the file specified.");
                 }
             }
+
+          /*   else if (CommandArray2Arg[0].ToLower() == "type")
+            {
+                int index = Program.CurrentDirectory.Search(CommandArray2Arg[1].ToString());
+                if (index == -1)
+                {
+                    Console.WriteLine("The File is not Exist");
+                }
+                else
+                {
+                    int FirstCluster = Program.CurrentDirectory.DirectoryTable[index].firstCluster;
+                    int fileSize = Program.CurrentDirectory.DirectoryTable[index].fileSize;
+                    string temp = "";
+                    FileEntryClass f = new FileEntryClass(CommandArray2Arg[1].ToCharArray(), 2, FirstCluster, fileSize, Program.CurrentDirectory, temp);
+                    f.ReadFileContent();
+                    string s = new string(f.FileName);
+                    Console.WriteLine("    " + s + "                 " + f.fileSize+" B");
+
+                }
+            }
+          */
+
+           /* else if (CommandArray2Arg[0].ToLower() == "type")//display the file content
+            {
+                int index = Program.CurrentDirectory.Search(CommandArray2Arg[1].ToString());
+                if (index != -1)
+                {
+                    int firstcluster = Program.CurrentDirectory.DirectoryTable[index].firstCluster;
+                    int filesize = Program.CurrentDirectory.DirectoryTable[index].fileSize;
+                    string content = "";
+                    FileEntryClass FE = new FileEntryClass(CommandArray2Arg[1].ToCharArray(), 0x0, firstcluster, filesize, Program.CurrentDirectory, content);
+                    FE.ReadFileContent();
+                    Console.WriteLine(FE.FileContent);
+                }
+                else
+                {
+                    Console.WriteLine("The system cannot find the file specified.");
+                }
+            }*/
 
             else if (CommandArray2Arg[0].ToLower() == "export")
             {
@@ -407,7 +441,7 @@ namespace OS_Project
                 }
             }
 
-            else if (CommandArray2Arg[0].ToLower() == "del") //// for only files
+            else if (CommandArray2Arg[0].ToLower() == "del") // for only files
             {
                 int index = Program.CurrentDirectory.Search(CommandArray2Arg[1].ToString());
                 if (index == -1)
@@ -432,7 +466,7 @@ namespace OS_Project
                 }
             }
 
-            else if (CommandArray2Arg[0].ToLower() == "copy")//// for only files///!!!!!!!!!
+            else if (CommandArray2Arg[0].ToLower() == "copy")// for only files
             {
                 int indexSource = Program.CurrentDirectory.Search(CommandArray2Arg[1].ToString());
                 if (indexSource == -1)  // السورس مش موجود
@@ -492,8 +526,8 @@ namespace OS_Project
                 Console.WriteLine(CommandArray2Arg[0] + " is not a valid command.");
                 Console.WriteLine("please valid Command ");
             }
-
-            }
         }
     }
+}
+
 

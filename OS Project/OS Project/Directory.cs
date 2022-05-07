@@ -63,6 +63,8 @@ namespace OS_Project
                     }
                     Directory_Table_Byte.Add(list);
                 }
+
+
                 if (Number_of_Reminder_Data > 0)
                 {
                     byte[] list2 = new byte[1024];
@@ -98,16 +100,8 @@ namespace OS_Project
                     Last_index = Fat_index;
                     Fat_index = FatTable.getAvailableBlock();
                 }
-                //if (Last_index != -1)
-                //{
-                //    FatTable.setNext(Last_index, Fat_index);  ///!!!!!**
-                //}
-                //FatTable.WriteFatTable();
-                //Last_index = Fat_index;
-                //Fat_index = FatTable.getAvailableBlock();
             }
                 FatTable.WriteFatTable();
-            
         }
 
         public void ReadDirectory()
@@ -129,14 +123,14 @@ namespace OS_Project
                 } while (next != -1);
             
                 byte[] d = new byte[32];
-            for (int i = 0; i < ls.Count; i++)
-            {
-                d[i % 32] = ls[i];
-                if ((i + 1) % 32 == 0)
+                for (int i = 0; i < ls.Count; i++)
                 {
-                    DirectoryTable.Add(GetDirectoryEntry(d));
+                    d[i % 32] = ls[i];
+                    if ((i + 1) % 32 == 0)
+                    {
+                        DirectoryTable.Add(GetDirectoryEntry(d));
+                    }
                 }
-            }
             }
         }
 
@@ -150,8 +144,6 @@ namespace OS_Project
                     s += " ";
             }
             FileName = s;
-            //int x = s.Length;
-
             for (int i = 0; i < DirectoryTable.Count; i++)
             {
                 string ss= new string(DirectoryTable[i].FileName);
@@ -162,8 +154,6 @@ namespace OS_Project
             }
             return -1;
         }
-
-
         public void UpdateContent(DirectoryEntry d)
         {
             ReadDirectory();

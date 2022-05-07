@@ -26,14 +26,11 @@ namespace OS_Project
             byte[] file = Encoding.ASCII.GetBytes(FileContent);
             for (int i = 0; i < FileContent.Length; i++)
             {
-                Content[i] = file[i]; //////////////*********!!!!!!!!!!
+                Content[i] = file[i]; 
             }
-
             int Number_OF_Required_Blocks = (int)Math.Ceiling(Content.Length / 1024.0m);
             int Number_of_full_Size_Block = (int)Math.Floor(Content.Length / 1024.0m);
             int Number_of_Reminder_Data = ((int)Content.Length % 1024);
-
-
             if (Number_OF_Required_Blocks <= FatTable.getAvailableBlocks())
             {
                 List<byte[]> l = new List<byte[]>();
@@ -71,7 +68,6 @@ namespace OS_Project
                     Fat_index = FatTable.getAvailableBlock();
                     firstCluster = Fat_index;
                 }
-
                 for (int i = 0; i < l.Count; i++)
                 {
                     VirtualDisk.WriteBlock(l[i], Fat_index);
