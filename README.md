@@ -38,6 +38,16 @@ import – import text file(s) from your computer​
 
 export – export text file(s) to your computer​
 
+The format of the directory entry is given in the following table.​
+MiniFat Directory Entry 
+|       name      | offset | size |                    description                   |
+|:---------------:|:------:|:----:|:------------------------------------------------:| 
+| dir_name        | 0      | 11   |8+3 filename. Empty entry if first byte is 0x0.   |
+| dir_attr        | 11     | 1    |0x0 for a regular file, 0x10 for a directory file.|
+| dir_empty       | 12     | 12   |unused                                            |
+| dir_firstcluster| 24     | 4    |cluster number of first cluster in file           |
+| dir_filesize    | 28     | 4    |size of file in bytes if a regular file.          |
+
 You can see a video demo here : (https://aunedu-my.sharepoint.com/:v:/g/personal/mahmud_20367790_compit_aun_edu_eg/EVdeE0TpbfBBjghRy93TmtwBR2UR7owXXxrRymViA8iHhw?e=Io0HUo)
 
 ![Screenshot 2022-05-07 094212](https://user-images.githubusercontent.com/59246305/167244349-4b9a671a-7f12-4c28-8a69-551c01877e31.png)
