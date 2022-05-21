@@ -48,6 +48,7 @@ namespace OS_Project
                         l.Add(list);
                     }
                 }
+
                 if (Number_of_Reminder_Data > 0)
                 {
                     int ic = 1024 * Number_of_full_Size_Block;  
@@ -59,10 +60,12 @@ namespace OS_Project
                     }
                     l.Add(list);
                 }
+
                 if (firstCluster != 0)  
                 {
                     Fat_index = firstCluster;
                 }
+
                 else
                 {
                     Fat_index = FatTable.getAvailableBlock();
@@ -85,7 +88,9 @@ namespace OS_Project
         }
         public string ReadFileContent()
         {
-            if (firstCluster != 0 && FatTable.GetNext(firstCluster) != 0)  
+
+            // if (firstCluster != 0 && FatTable.GetNext(firstCluster) != 0) 
+            if (firstCluster != 0)
             {
                 Fat_index = firstCluster;
                 int next;

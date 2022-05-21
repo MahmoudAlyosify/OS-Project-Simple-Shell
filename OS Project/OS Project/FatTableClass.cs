@@ -7,23 +7,38 @@ namespace OS_Project
 {
     public static class FatTable
     {
-        public static int[] arr;
+        public static int[]arr = new int[1024];
         public static string FileName = "OS.txt";
-       static FatTable()
+
+
+        /*
+         static FatTable()
         {
-            arr = new int[1024];
+             arr = new int[1024];
+             arr[0] = -1; 
+             arr[1] = 2;  
+             arr[2] = 3;
+             arr[3] = 4;
+             arr[4] = -1;
+
+             for (int i = 5; i < 1024; i++)
+             {
+                 arr[i] = 0;
+             }
+         }
+           */
+        public static void initaltizeFat()
+        {
             arr[0] = -1; 
             arr[1] = 2;  
             arr[2] = 3;
             arr[3] = 4;
             arr[4] = -1;
-
             for (int i = 5; i < 1024; i++)
             {
                 arr[i] = 0;
             }
         }
-  
 
         public static void WriteFatTable()
         {
@@ -36,25 +51,26 @@ namespace OS_Project
                 file.Close();
             }
         }
-        public static int[] GetFatTable()
+        public static void GetFatTable()
         {
+            //FatTable.initaltizeFat();
             using (FileStream file = new FileStream(FileName, FileMode.Open, FileAccess.ReadWrite))
             {
                 file.Seek(1024, SeekOrigin.Begin);
                 byte[] buffer = new byte[4096];
                 file.Read(buffer, 0, buffer.Length);
                 int[] retArr = new int[1024];
-                Buffer.BlockCopy(buffer, 0, retArr, 0, buffer.Length);
+                Buffer.BlockCopy(buffer, 0, arr, 0, buffer.Length);
                 file.Close();
-                return retArr;
+
             }
         }
         public static int getAvailableBlocks()
         {
             int counter = 0;
-            for (int i = 0; i < GetFatTable().Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if ((GetFatTable()[i]) == 0)
+                if ((arr[i]) == 0)
                 {
                     counter++;
                 }
@@ -63,9 +79,9 @@ namespace OS_Project
         }
         public static int getAvailableBlock()
         {
-            for (int i = 0; i < GetFatTable().Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if ((GetFatTable()[i]) == 0)
+                if ((arr[i]) == 0)
                 {
                     return i;
                 }
@@ -73,45 +89,58 @@ namespace OS_Project
             return 1;
         }
 
+        /* public static int GetNext(int index)
+         {
+             int NextValue;
+             for (int i = 0; i < GetFatTable().Length; i++)
+             {
+                 if (i == index)
+                 {
+                     NextValue = GetFatTable()[i];
+                     return NextValue;
+                 }
+             }
+             return 0;
+         }*/
+
+
+        /* public static void setNext(int value, int Index) 
+         {
+             int[] NotBlocks = new int[5] { 0, 1, 2, 3, 4 };
+             if (Index < 0)
+             {}
+             else
+             {
+                 for (int i = 0; i < GetFatTable().Length; i++)
+                 {
+                     if (Index != NotBlocks[0] && Index != NotBlocks[1] && Index != NotBlocks[2] && Index != NotBlocks[3] && Index != NotBlocks[4])
+                     {
+                         if (i == Index)
+                         {
+                             arr[i] = value;
+                             WriteFatTable();
+                             GetFatTable();
+                         }
+                     }
+                     else
+                     {
+
+                         break;
+                     }
+                 }
+             }
+         }
+        */
         public static int GetNext(int index)
         {
-            int NextValue;
-            for (int i = 0; i < GetFatTable().Length; i++)
-            {
-                if (i == index)
-                {
-                    NextValue = GetFatTable()[i];
-                    return NextValue;
-                }
-            }
-            return 0;
-        }
-        public static void setNext(int value, int Index) 
-        {
-            int[] NotBlocks = new int[5] { 0, 1, 2, 3, 4 };
-            if (Index < 0)
-            {}
-            else
-            {
-                for (int i = 0; i < GetFatTable().Length; i++)
-                {
-                    if (Index != NotBlocks[0] && Index != NotBlocks[1] && Index != NotBlocks[2] && Index != NotBlocks[3] && Index != NotBlocks[4])
-                    {
-                        if (i == Index)
-                        {
-                            arr[i] = value;
-                            WriteFatTable();
-                            GetFatTable();
-                        }
-                    }
-                    else
-                    {
 
-                        break;
-                    }
-                }
-            }
+            return arr[index];
         }
+        public static void setNext(int value, int Index)
+        {
+            arr[Index] = value;
+        }
+         
         static public int FreeSpaces()
         {
             int free = FatTable.getAvailableBlocks() * 1024;

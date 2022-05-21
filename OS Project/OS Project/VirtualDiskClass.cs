@@ -47,18 +47,19 @@ namespace OS_Project
                         }
                     }
                     file.Close();
+                    
                 }
-                Root = new Directory("M:".ToCharArray(), 1, 6,0, null);
+                FatTable.initaltizeFat();
+                Root = new Directory("M:\\Users\\OS".ToCharArray(), 1, 5 ,0, null);
                 Root.Write_Directory();
                 FatTable.WriteFatTable();
             }
             else
             {
-                int[] Fat_Table = FatTable.GetFatTable();
-                Root = new Directory("M:".ToCharArray(), 1, 5,0, null);
-                Root.Write_Directory();
-                FatTable.WriteFatTable();
+                FatTable.GetFatTable();
+                Root = new Directory("M:\\Users\\OS".ToCharArray(), 1, 5,0, null);
                 Root.ReadDirectory();
+                FatTable.WriteFatTable();
             }
         }
 

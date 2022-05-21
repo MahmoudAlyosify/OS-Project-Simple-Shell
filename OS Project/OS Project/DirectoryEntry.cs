@@ -13,7 +13,6 @@ namespace OS_Project
         public int firstCluster;
        public DirectoryEntry( char[] fileName, byte fileAttribute, int FirstCluster, int fileSize)
         {
-           fileSize = 0;
             string s = new string(fileName);
             if (fileName.Length < 11)
             {
@@ -86,7 +85,7 @@ namespace OS_Project
                 char11_FileName[i] = Convert.ToChar(First11byte_filename[i]); // بيحولها لكاركتر وبيخزنها فى اراى
             }
 
-            byte fileatt = b[12]; // خزن الفايل اتريبيوت
+            byte fileatt = b[11]; // خزن الفايل اتريبيوت
 
             byte[] FileEmpty = new byte[12]; // عمل اراى اوف بايت علشان يقرأ بايتات الاراى القديمة
             int j = 0;

@@ -20,12 +20,12 @@ namespace OS_Project
          
             CurrentDirectory = VirtualDisk.Root;
             string s = new string(CurrentDirectory.FileName);
-            Path = s;
+            Path = s.Trim();
 
             while (true)
             {
                 Console.Write(Path);
-                Console.Write(">");
+                Console.Write(">>");
                 string Commmand = Console.ReadLine();
                 Commands com = new Commands(Commmand);
             }
