@@ -1,5 +1,5 @@
 # OS-Project-Simple-Shell
-# Simple Shell & File system (FAT) 
+# Simple Shell & File system (FAT) with Sub Directory
 Course Title: Operating Systems Course Code: CS321 
 by Prof. Khaled F. Hussain
 Faculty of Computers and Information, Assiut University
@@ -49,7 +49,8 @@ MiniFat Directory Entry
 | dir_filesize    | 28     | 4    |size of file in bytes if a regular file.          |
 
 
-![Screenshot 2022-05-07 094212](https://user-images.githubusercontent.com/59246305/167244349-4b9a671a-7f12-4c28-8a69-551c01877e31.png)
+https://user-images.githubusercontent.com/59246305/169651621-87eb28a8-2a45-430f-b6e6-9f6bfda5e5cb.mp4
+
 
 # This project was implemented by:
 - Mahmoud Sayed Youssef
